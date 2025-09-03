@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&display=swap');
+
+#p1 {
+    color: #1d00a0;
+    font-size: 31px;
+    font-family: 'Roboto', sans-serif; /* Fuente Roboto */
+}
+
+#p2 {
+    color: #398f79;
+    font-size: 31px;
+    font-family: 'Orbitron', sans-serif; /* Fuente Orbitron */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+header .logo{
+    font-size: 24px;
+    font-weight: bold;
+}
