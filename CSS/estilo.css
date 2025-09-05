@@ -1,27 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&display=swap');
 
-#p1 {
-    color: #1d00a0;
-    font-size: 31px;
-    font-family: 'Roboto', sans-serif; /* Fuente Roboto */
+#T-encabezado {
+    color: #39FF14;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif; /* Fuente Roboto, fuente principal*/
 }
 
-#p2 {
-    color: #398f79;
-    font-size: 31px;
-    font-family: 'Orbitron', sans-serif; /* Fuente Orbitron */
+#pEncabezado {
+    color: #39FF14;
+    font-size: 18px;
+    font-family: 'Orbitron', sans-serif; /* Fuente Orbitron, fuente para encabezado */
+}
+
+#pTitulo {
+    color: #39FF14;
+    font-size: 30px;
+    font-family: 'Orbitron', sans-serif; /* Fuente Orbitron, fuente para encabezado */
+}
+
+body {
+    background-color: #000000; /* Cambia el color de fondo */
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ccc;
+    background-color: #1E90FF;
+    padding: 15px 20px;
+    border-bottom: 1px solid #0004ff;
 }
 
-header .logo{
-    font-size: 24px;
-    font-weight: bold;
+header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.logo-img {
+    width: 80px;           /* Ancho pequeño */
+    height: auto;          /* Mantiene la proporción */
+    border-radius: 20px;   /* Bordes redondeados */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Sombra */
+    border: 2px solid #39FF14; /* Borde verde neón */
+    margin-left: 12px; /* Separación horizontal */
+}
+/* Estilo para imágenes en el body */
+.logo-body-img {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: 1px solid #1E90FF;
+    margin: 10px 0;
+}
+
+header .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+header .main-nav ul li a {
+    text-decoration: none;
+    color: #0010eb;
+    font-weight: 500;
+}
+
+header .user-options a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #027aeb;
+    font-weight: 500;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1E90FF;
+    padding: 20px;
+    margin: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: 1px solid #000;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+
