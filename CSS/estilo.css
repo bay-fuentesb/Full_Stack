@@ -1,27 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@400;700&display=swap');
 
-#T-encabezado {
+/* estilos de letras */
+#Texto-Titulo-Cuerpo {
     color: #39FF14;
     font-size: 25px;
     font-family: 'Roboto', sans-serif; /* Fuente Roboto, fuente principal*/
 }
+#Texto-Simple-Cuerpo {
+    color: #39FF14;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif; /* Fuente Roboto, fuente principal*/
+}
 
-#pEncabezado {
+#texto_Encabezado {
     color: #39FF14;
     font-size: 18px;
     font-family: 'Orbitron', sans-serif; /* Fuente Orbitron, fuente para encabezado */
 }
 
-#pTitulo {
-    color: #39FF14;
-    font-size: 30px;
-    font-family: 'Orbitron', sans-serif; /* Fuente Orbitron, fuente para encabezado */
-}
 
+/* estilos de fondo */  
 body {
     background-color: #000000; /* Cambia el color de fondo */
 }
-
+/* estilos de header */
 header {
     display: flex;
     justify-content: space-between;
@@ -30,13 +32,13 @@ header {
     padding: 15px 20px;
     border-bottom: 1px solid #0004ff;
 }
-
+/* estilos de logo */
 header .logo {
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
+/* estilo de la imagen del logo */
 .logo-img {
     width: 80px;           /* Ancho pequeño */
     height: auto;          /* Mantiene la proporción */
@@ -46,7 +48,7 @@ header .logo {
     margin-left: 12px; /* Separación horizontal */
 }
 /* Estilo para imágenes en el body */
-.logo-body-img {
+.logo-body-img-principal {
     width: 250px;
     height: auto;
     border-radius: 10px;
@@ -54,7 +56,15 @@ header .logo {
     border: 1px solid #1E90FF;
     margin: 10px 0;
 }
-
+.logo-body-img-secundarios {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    border: 1px solid #1E90FF;
+    margin: 10px 0;
+}
+/* estilo de la lista de navegacion */
 header .main-nav ul {
     list-style: none;
     display: flex;
@@ -62,20 +72,20 @@ header .main-nav ul {
     margin: 0;
     padding: 0;
 }
-
+/* estilo de los enlaces de la lista de navegacion */
 header .main-nav ul li a {
     text-decoration: none;
     color: #0010eb;
     font-weight: 500;
 }
-
+/* estilo de los enlaces de la lista de usuario */
 header .user-options a {
     margin-left: 15px;
     text-decoration: none;
     color: #027aeb;
     font-weight: 500;
 }
-
+/* estilo de la seccion de encabezado */
 .encabezado {
     display: flex;
     justify-content: space-between;
@@ -84,12 +94,87 @@ header .user-options a {
     padding: 20px;
     margin: 20px;
 }
-
+/* estilo del boton */
 .button {
     padding: 10px 20px;
-    border: 1px solid #000;
-    background-color: #ffffff;
+    border: 2px solid #39FF14;  /* ← Borde verde neón */
+    background-color: #1E90FF;  /* ← Fondo azul */
     cursor: pointer;
+    color: #39FF14;  /* ← Texto verde neón */
+    border-radius: 5px;  /* ← Bordes redondeados */
+    transition: all 0.3s ease;  /* ← Efecto suave */
+}
+/* estilo del boton al pasar el mouse */
+.button:hover {
+    background-color: #39FF14;  /* ← Al pasar el mouse */
+    color: #1E90FF;
 }
 
+/* Estilos para la cuadrícula de productos */
+.productos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin: 20px;
+    background-color: #000000;
+}
 
+.producto-card {
+    background-color: #1E90FF;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+}
+
+.producto-imagen {
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #39FF14;
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.placeholder {
+    font-size: 48px;
+    color: #999;
+    font-weight: bold;
+}
+
+.producto-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.producto-info h3 {
+    color: #39FF14;
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.producto-info p {
+    color: #ffffff;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.precio {
+    display: block;
+    font-weight: bold;
+    color: #39FF14;
+    font-size: 16px;
+    font-family: 'Orbitron', sans-serif;
+}
