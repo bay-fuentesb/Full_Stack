@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <title>Artículo del Blog - Level-Up Gamer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span id="texto_Encabezado">Level-up_gamer</span>
+            <img src="../img/Level-up_gamer.png" alt="Descripción de la imagen" class="logo-img">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a id="texto_Encabezado" href="index.html">Home</a></li>
+                <li><a id="texto_Encabezado" href="Productos.html">Productos</a></li>
+                <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
+                <li><a id="texto_Encabezado" href="Blog.html">Blogs</a></li>
+                <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a id="texto_Encabezado" href="#login" onclick="LevelUpGamer.goToLogin()">Iniciar sesión</a>
+            <a id="texto_Encabezado" href="#register" onclick="LevelUpGamer.goToRegister()">Registrar usuario</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Carrito</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Inicio</a> > <a href="Blog.html">Blog</a> > <span>Introducción</span>
+        </div>
+
+        <!-- Introducción a la página -->
+        <section class="encabezado">
+            <div class="product-detail-content blog-layout">
+                <div class="blog-content-left">
+                    <div class="product-info-detail">
+                        <h1>🎮 ¡Bienvenidos a Level-Up Gamer!</h1>
+                        <p class="category">Tu tienda de confianza para gaming en Chile</p>
+                        <p class="article-date">📅 14 de Septiembre, 2024</p>
+                        <p class="description">Hoy damos inicio oficial a nuestra página web de Level-Up Gamer, tu tienda de confianza para todo lo relacionado con gaming en Chile.</p>
+                        
+                        <div class="article-content">
+                            <h3>🎮 Una nueva era para los gamers chilenos</h3>
+                            <p>Después de meses de preparación, estamos emocionados de presentarles nuestra nueva plataforma digital. Level-Up Gamer nació de la pasión por los videojuegos y la necesidad de ofrecer productos de calidad a precios justos para la comunidad gamer en Chile.</p>
+                            
+                            <h3>🚀 ¿Qué nos hace diferentes?</h3>
+                            <ul>
+                                <li><strong>Productos auténticos:</strong> Todos nuestros productos son 100% originales y cuentan con garantía oficial.</li>
+                                <li><strong>Precios competitivos:</strong> Trabajamos directamente con distribuidores para ofrecer los mejores precios.</li>
+                                <li><strong>Envío a todo Chile:</strong> Llegamos a cada rincón del país con envío seguro y rápido.</li>
+                                <li><strong>Atención personalizada:</strong> Nuestro equipo está formado por gamers que entienden tus necesidades.</li>
+                            </ul>
+                          
+                            <p><strong>¡Gracias por ser parte de esta aventura! 🎮</strong></p>
+                        </div>
+                        
+                        <div class="article-tags">
+                            <span class="article-tag">#Noticias</span>
+                            <span class="article-tag">#Gaming</span>
+                            <span class="article-tag">#Chile</span>
+                            <span class="article-tag">#Tienda Online</span>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="buy-now" onclick="goToBlog()">
+                                📚 Volver a los blogs
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-image-right">
+                    <div class="product-image-large">
+                        <img src="../img/Level-up_gamer.png" alt="Level-Up Gamer Logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Level-Up Gamer</h3>
+                <div class="payment-methods">
+                    <div class="payment-icon visa">VISA</div>
+                    <div class="payment-icon mastercard">Mastercard</div>
+                    <div class="payment-icon amex">AMEX</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="categories">
+                    <a href="#consolas" onclick="LevelUpGamer.goToProductsByCategory('consolas')">Consolas</a>
+                    <span class="separator">|</span>
+                    <a href="#accesorios" onclick="LevelUpGamer.goToProductsByCategory('accesorios')">Accesorios</a>
+                    <span class="separator">|</span>
+                    <a href="#computadores" onclick="LevelUpGamer.goToProductsByCategory('computadores')">Computadores</a>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <h4>¡Mantente al día! Únete a nuestro Newsletter.</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter Email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Función de navegación
+        function goToBlog() {
+            window.location.href = 'Blog.html';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <title>Registro - Level-Up Gamer</title>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span id="texto_Encabezado">Level-up_gamer</span>
+            <img src="../img/Level-up_gamer.png" alt="Descripción de la imagen" class="logo-img">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a id="texto_Encabezado" href="index.html">Home</a></li>
+                <li><a id="texto_Encabezado" href="Productos.html">Productos</a></li>
+                <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
+                <li><a id="texto_Encabezado" href="blog.html">Blogs</a></li>
+                <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a id="texto_Encabezado" href="#login" onclick="LevelUpGamer.goToLogin()">Iniciar sesión</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Carrito</a>
+        </div>
+    </header>
+
+    <main class="register-container">
+        <form class="register-form" id="registerForm">
+            <div class="register-header">
+                <h1>🚀 ¡Únete!</h1>
+                <p>Crea tu cuenta gamer y accede a ofertas exclusivas</p>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <div class="gaming-features">
+                <h3>🎮 Beneficios de ser miembro Level-Up</h3>
+                <div class="features-grid">
+                    <div class="feature-item">⚡ Ofertas exclusivas</div>
+                    <div class="feature-item">🚚 Envío gratis</div>
+                    <div class="feature-item">🏆 Puntos de recompensa</div>
+                    <div class="feature-item">📱 Acceso prioritario</div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">Nombre *</label>
+                    <div class="password-container">
+                        <input 
+                            type="text" 
+                            id="firstName" 
+                            class="form-input" 
+                            placeholder="Tu nombre"
+                            required
+                        >
+                        <span class="validation-icon" id="firstNameIcon"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Apellido *</label>
+                    <div class="password-container">
+                        <input 
+                            type="text" 
+                            id="lastName" 
+                            class="form-input" 
+                            placeholder="Tu apellido"
+                            required
+                        >
+                        <span class="validation-icon" id="lastNameIcon"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">Usuario Gamer *</label>
+                <div class="password-container">
+                    <input 
+                        type="text" 
+                        id="username" 
+                        class="form-input" 
+                        placeholder="Ej: ProGamer2024"
+                        required
+                    >
+                    <span class="validation-icon" id="usernameIcon"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <div class="password-container">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        class="form-input" 
+                        placeholder="tu@email.com"
+                        required
+                    >
+                    <span class="validation-icon" id="emailIcon"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        class="form-input" 
+                        placeholder="+56 9 1234 5678"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="birthdate">Fecha de Nacimiento</label>
+                    <input 
+                        type="date" 
+                        id="birthdate" 
+                        class="form-input"
+                    >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="favoriteGenre">Género de juegos favorito</label>
+                <select id="favoriteGenre" class="form-select">
+                    <option value="">Selecciona tu género favorito</option>
+                    <option value="accion">Acción</option>
+                    <option value="aventura">Aventura</option>
+                    <option value="rpg">RPG</option>
+                    <option value="estrategia">Estrategia</option>
+                    <option value="fps">FPS</option>
+                    <option value="deportes">Deportes</option>
+                    <option value="simulacion">Simulación</option>
+                    <option value="puzzle">Puzzle</option>
+                    <option value="racing">Carreras</option>
+                    <option value="retro">Retro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña *</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="Mínimo 8 caracteres"
+                        required
+                    >
+                    <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                        👁️
+                    </button>
+                </div>
+                <div class="password-strength">
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="strengthBar"></div>
+                    </div>
+                    <span id="strengthText" style="color: #666;">Ingresa una contraseña</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirmar Contraseña *</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        class="form-input" 
+                        placeholder="Repite tu contraseña"
+                        required
+                    >
+                    <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword')">
+                        👁️
+                    </button>
+                    <span class="validation-icon" id="confirmPasswordIcon"></span>
+                </div>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">
+                    Acepto los <a href="#" onclick="showTerms()">Términos y Condiciones</a> 
+                    y la <a href="#" onclick="showPrivacy()">Política de Privacidad</a> *
+                </label>
+            </div>
+
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                <label for="newsletter">
+                    Quiero recibir ofertas especiales y noticias gaming por email 📧
+                </label>
+            </div>
+
+            <button type="submit" class="register-button" id="registerBtn">
+                🎮 CREAR MI CUENTA GAMER
+            </button>
+
+            <div class="login-link">
+                <p>¿Ya tienes una cuenta?</p>
+                <a href="Login.html">¡Inicia sesión aquí!</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Level-Up Gamer</h3>
+                <div class="payment-methods">
+                    <div class="payment-icon visa">VISA</div>
+                    <div class="payment-icon mastercard">Mastercard</div>
+                    <div class="payment-icon amex">AMEX</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="categories">
+                    <a href="#consolas" onclick="LevelUpGamer.goToProductsByCategory('consolas')">Consolas</a>
+                    <span class="separator">|</span>
+                    <a href="#accesorios" onclick="LevelUpGamer.goToProductsByCategory('accesorios')">Accesorios</a>
+                    <span class="separator">|</span>
+                    <a href="#computadores" onclick="LevelUpGamer.goToProductsByCategory('computadores')">Computadores</a>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <h4>¡Mantente al día! Únete a nuestro Newsletter.</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter Email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Función para mostrar mensajes
+        function showMessage(message, type = 'error') {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            
+            if (type === 'error') {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                successDiv.style.display = 'none';
+            } else {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+                errorDiv.style.display = 'none';
+            }
+
+            // Scroll hacia el mensaje
+            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Función para alternar visibilidad de contraseña
+        function togglePassword(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            const toggleBtn = passwordInput.nextElementSibling;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        // Función para validar fortaleza de contraseña
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            let feedback = '';
+
+            if (password.length >= 8) strength += 1;
+            if (password.match(/[a-z]/)) strength += 1;
+            if (password.match(/[A-Z]/)) strength += 1;
+            if (password.match(/[0-9]/)) strength += 1;
+            if (password.match(/[^a-zA-Z0-9]/)) strength += 1;
+
+            const strengthBar = document.getElementById('strengthBar');
+            const strengthText = document.getElementById('strengthText');
+
+            strengthBar.className = 'strength-fill';
+
+            switch (strength) {
+                case 0:
+                case 1:
+                    strengthBar.classList.add('strength-weak');
+                    feedback = 'Muy débil';
+                    strengthText.style.color = '#ff4444';
+                    break;
+                case 2:
+                case 3:
+                    strengthBar.classList.add('strength-medium');
+                    feedback = 'Media';
+                    strengthText.style.color = '#ffaa00';
+                    break;
+                case 4:
+                    strengthBar.classList.add('strength-good');
+                    feedback = 'Buena';
+                    strengthText.style.color = '#39FF14';
+                    break;
+                case 5:
+                    strengthBar.classList.add('strength-strong');
+                    feedback = '¡Excelente!';
+                    strengthText.style.color = '#00ff88';
+                    break;
+            }
+
+            strengthText.textContent = feedback;
+            return strength;
+        }
+
+        // Función para validar campo individual
+        function validateField(fieldId, validator) {
+            const field = document.getElementById(fieldId);
+            const icon = document.getElementById(fieldId + 'Icon');
+            const isValid = validator(field.value);
+
+            if (isValid) {
+                field.classList.remove('field-error');
+                field.classList.add('field-success');
+                if (icon) {
+                    icon.textContent = '✓';
+                    icon.className = 'validation-icon icon-success';
+                }
+            } else {
+                field.classList.remove('field-success');
+                field.classList.add('field-error');
+                if (icon) {
+                    icon.textContent = '✗';
+                    icon.className = 'validation-icon icon-error';
+                }
+            }
+
+            return isValid;
+        }
+
+        // Validadores
+        const validators = {
+            firstName: (value) => value.trim().length >= 2,
+            lastName: (value) => value.trim().length >= 2,
+            username: (value) => value.trim().length >= 3 && /^[a-zA-Z0-9_]+$/.test(value),
+            email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
+            password: (value) => checkPasswordStrength(value) >= 3,
+            confirmPassword: (value) => {
+                const password = document.getElementById('password').value;
+                return value === password && value.length > 0;
+            }
+        };
+
+        // Event listeners para validación en tiempo real
+        Object.keys(validators).forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.addEventListener('blur', () => {
+                    validateField(fieldId, validators[fieldId]);
+                });
+
+                if (fieldId === 'password') {
+                    field.addEventListener('input', () => {
+                        checkPasswordStrength(field.value);
+                        // Revalidar confirmación si ya tiene contenido
+                        const confirmField = document.getElementById('confirmPassword');
+                        if (confirmField.value) {
+                            validateField('confirmPassword', validators.confirmPassword);
+                        }
+                    });
+                }
+
+                if (fieldId === 'confirmPassword') {
+                    field.addEventListener('input', () => {
+                        validateField('confirmPassword', validators.confirmPassword);
+                    });
+                }
+            }
+        });
+
+        // Función para mostrar términos y condiciones
+        function showTerms() {
+            alert('📜 TÉRMINOS Y CONDICIONES\n\n1. Debes ser mayor de edad para registrarte\n2. Proporcionar información veraz\n3. Uso responsable de la plataforma\n4. Respeto a otros usuarios\n5. Cumplimiento de las políticas de compra\n\n¡Gracias por ser parte de Level-Up Gamer!');
+        }
+
+        // Función para mostrar política de privacidad
+        function showPrivacy() {
+            alert('🔒 POLÍTICA DE PRIVACIDAD\n\n• Tus datos están protegidos\n• No compartimos información personal\n• Uso de cookies para mejorar la experiencia\n• Puedes eliminar tu cuenta cuando quieras\n• Cumplimos con las leyes de protección de datos\n\n¡Tu privacidad es nuestra prioridad!');
+        }
+
+        // Función de registro exitoso
+        function registerSuccess(userData) {
+            showMessage(`🎉 ¡Bienvenido ${userData.firstName}! Tu cuenta ha sido creada exitosamente. Redirigiendo al login...`, 'success');
+            
+            // Simular guardar usuario (en un proyecto real se enviaría al servidor)
+            const users = JSON.parse(localStorage.getItem('levelup_users') || '[]');
+            users.push({
+                id: Date.now(),
+                ...userData,
+                createdAt: new Date().toISOString(),
+                isActive: true
+            });
+            localStorage.setItem('levelup_users', JSON.stringify(users));
+            
+            // Redirigir al login después de 3 segundos
+            setTimeout(() => {
+                window.location.href = 'Login.html';
+            }, 3000);
+        }
+
+        // Validación completa del formulario
+        function validateForm() {
+            let isValid = true;
+            const errors = [];
+
+            // Validar campos requeridos
+            const requiredFields = ['firstName', 'lastName', 'username', 'email', 'password'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    isValid = false;
+                    errors.push(`${field.previousElementSibling.textContent} es requerido`);
+                    field.classList.add('field-error');
+                } else if (validators[fieldId] && !validators[fieldId](field.value)) {
+                    isValid = false;
+                    errors.push(`${field.previousElementSibling.textContent} no es válido`);
+                }
+            });
+
+            // Validar confirmación de contraseña
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                isValid = false;
+                errors.push('Las contraseñas no coinciden');
+            }
+
+            // Validar términos y condiciones
+            const termsCheckbox = document.getElementById('terms');
+            if (!termsCheckbox.checked) {
+                isValid = false;
+                errors.push('Debes aceptar los términos y condiciones');
+            }
+
+            // Validar usuario único (simulado)
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const existingUsers = JSON.parse(localStorage.getItem('levelup_users') || '[]');
+            
+            if (existingUsers.some(user => user.username === username)) {
+                isValid = false;
+                errors.push('El nombre de usuario ya está en uso');
+            }
+            
+            if (existingUsers.some(user => user.email === email)) {
+                isValid = false;
+                errors.push('El email ya está registrado');
+            }
+
+            if (!isValid) {
+                showMessage(errors.join('\n'));
+            }
+
+            return isValid;
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Mostrar loading
+            const submitBtn = document.getElementById('registerBtn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '🔄 Creando cuenta...';
+            submitBtn.disabled = true;
+            
+            // Simular delay de servidor
+            setTimeout(() => {
+                const formData = {
+                    firstName: document.getElementById('firstName').value.trim(),
+                    lastName: document.getElementById('lastName').value.trim(),
+                    username: document.getElementById('username').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    birthdate: document.getElementById('birthdate').value,
+                    favoriteGenre: document.getElementById('favoriteGenre').value,
+                    newsletter: document.getElementById('newsletter').checked
+                };
+                
+                registerSuccess(formData);
+                
+                // Restaurar botón (aunque se redirig

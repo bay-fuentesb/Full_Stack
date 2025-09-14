@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../CSS/estilo.css"> <!-- Enlace al archivo CSS -->
+        <title>Blog</title>
+    </head>
+    <header>
+        <div class="logo">
+            <span id="texto_Encabezado">Level-up_gamer</span>
+            <img src="../img/Level-up_gamer.png" alt="Descripción de la imagen" class="logo-img">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a id="texto_Encabezado" href="index.html">Home</a></li>
+                <li><a id="texto_Encabezado" href="Productos.html">Productos</a></li>
+                <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
+                <li><a id="texto_Encabezado" href="blog.html">Blogs</a></li>
+                <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a id="texto_Encabezado" href="#login" onclick="LevelUpGamer.goToLogin()">Iniciar sesión</a>
+            <a id="texto_Encabezado" href="#register" onclick="LevelUpGamer.goToRegister()">Registrar usuario</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Carrito</a>
+        </div>
+    </header>
+    <main>
+        <section class="encabezado">
+            <ul>
+                <h1 id="Texto-Titulo-Cuerpo">Inicio de Pagina</h1>
+                <p id="Texto-Simple-Cuerpo">Hoy, 14 de Septiembre damos inicio a la pagina de Level up gamer</p>
+                <button class="button" onclick="goToInfoBlog()">Ver productos</button>
+            </ul>
+            <img src="../img/Level-up_gamer.png" class="logo-body-img" alt="Logo Body">
+        </section>
+
+
+
+
+
+
+        <script src="../js/main.js"></script>
+        <script>
+                    // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('cartModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        </script>
+    </main>
+
+</html>

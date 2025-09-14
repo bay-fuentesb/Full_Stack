@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <title>Iniciar Sesión - Level-Up Gamer</title>
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span id="texto_Encabezado">Level-up_gamer</span>
+            <img src="../img/Level-up_gamer.png" alt="Descripción de la imagen" class="logo-img">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a id="texto_Encabezado" href="index.html">Home</a></li>
+                <li><a id="texto_Encabezado" href="Productos.html">Productos</a></li>
+                <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
+                <li><a id="texto_Encabezado" href="blog.html">Blogs</a></li>
+                <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a id="texto_Encabezado" href="#register" onclick="LevelUpGamer.goToRegister()">Registrar usuario</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Carrito</a>
+        </div>
+    </header>
+
+    <main class="login-container">
+        <form class="login-form" id="loginForm">
+            <div class="login-header">
+                <h1>🎮 ¡Bienvenido!</h1>
+                <p>Inicia sesión para acceder a tu cuenta gamer</p>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <div class="form-group">
+                <label for="email">Email o Usuario</label>
+                <input 
+                    type="text" 
+                    id="email" 
+                    class="form-input" 
+                    placeholder="Ingresa tu email o usuario"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <div class="password-container">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        class="form-input" 
+                        placeholder="Ingresa tu contraseña"
+                        required
+                    >
+                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                        👁️
+                    </button>
+                </div>
+            </div>
+
+            <div class="login-options">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Recordarme</label>
+                </div>
+                <a href="#" class="forgot-password" onclick="showForgotPassword()">¿Olvidaste tu contraseña?</a>
+            </div>
+
+            <button type="submit" class="login-button">
+                🚀 INICIAR SESIÓN
+            </button>
+
+            <div class="social-login">
+                <p>O inicia sesión con</p>
+                <div class="social-buttons">
+                    <button type="button" class="social-btn" onclick="loginWithGoogle()">
+                        Google
+                    </button>
+                    <button type="button" class="social-btn" onclick="loginWithDiscord()">
+                        Discord
+                    </button>
+                    <button type="button" class="social-btn" onclick="loginWithSteam()">
+                        Steam
+                    </button>
+                </div>
+            </div>
+
+            <div class="register-link">
+                <p>¿No tienes una cuenta?</p>
+                <a href="#" onclick="LevelUpGamer.goToRegister()">¡Regístrate aquí y únete a la comunidad gamer!</a>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Level-Up Gamer</h3>
+                <div class="payment-methods">
+                    <div class="payment-icon visa">VISA</div>
+                    <div class="payment-icon mastercard">Mastercard</div>
+                    <div class="payment-icon amex">AMEX</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="categories">
+                    <a href="#consolas" onclick="LevelUpGamer.goToProductsByCategory('consolas')">Consolas</a>
+                    <span class="separator">|</span>
+                    <a href="#accesorios" onclick="LevelUpGamer.goToProductsByCategory('accesorios')">Accesorios</a>
+                    <span class="separator">|</span>
+                    <a href="#computadores" onclick="LevelUpGamer.goToProductsByCategory('computadores')">Computadores</a>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <h4>¡Mantente al día! Únete a nuestro Newsletter.</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter Email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Usuarios de prueba para demo
+        const users = [
+            { email: 'admin@levelup.com', password: 'admin123', name: 'Admin Gamer' },
+            { email: 'user@test.com', password: 'test123', name: 'Test User' },
+            { email: 'gamer@pro.com', password: 'gamer123', name: 'Pro Gamer' }
+        ];
+
+        // Función para mostrar mensajes
+        function showMessage(message, type = 'error') {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            
+            if (type === 'error') {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+                successDiv.style.display = 'none';
+            } else {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+                errorDiv.style.display = 'none';
+            }
+
+            // Ocultar mensaje después de 5 segundos
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+                successDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        // Función para alternar visibilidad de contraseña
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleBtn = document.querySelector('.toggle-password');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleBtn.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleBtn.textContent = '👁️';
+            }
+        }
+
+        // Función para mostrar recuperación de contraseña
+        function showForgotPassword() {
+            const email = prompt('Ingresa tu email para recuperar tu contraseña:');
+            if (email) {
+                if (email.includes('@')) {
+                    showMessage('✅ Se ha enviado un email de recuperación a ' + email, 'success');
+                } else {
+                    showMessage('Por favor ingresa un email válido');
+                }
+            }
+        }
+
+        // Funciones de login social (demo)
+        function loginWithGoogle() {
+            showMessage('🚀 Iniciando sesión con Google...', 'success');
+            setTimeout(() => {
+                loginSuccess('Usuario Google');
+            }, 2000);
+        }
+
+        function loginWithDiscord() {
+            showMessage('🚀 Iniciando sesión con Discord...', 'success');
+            setTimeout(() => {
+                loginSuccess('Usuario Discord');
+            }, 2000);
+        }
+
+        function loginWithSteam() {
+            showMessage('🚀 Iniciando sesión con Steam...', 'success');
+            setTimeout(() => {
+                loginSuccess('Usuario Steam');
+            }, 2000);
+        }
+
+        // Función de login exitoso
+        function loginSuccess(userName) {
+            showMessage(`¡Bienvenido ${userName}! Redirigiendo...`, 'success');
+            
+            // Simular guardar sesión
+            const userData = {
+                name: userName,
+                loginTime: new Date().toISOString(),
+                isLoggedIn: true
+            };
+            
+            // En un proyecto real usarías sessionStorage o cookies seguras
+            sessionStorage.setItem('userData', JSON.stringify(userData));
+            
+            // Redirigir después de 2 segundos
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+
+        // Validación del formulario
+        function validateForm(email, password) {
+            if (!email || !password) {
+                showMessage('Por favor completa todos los campos');
+                return false;
+            }
+
+            if (password.length < 6) {
+                showMessage('La contraseña debe tener al menos 6 caracteres');
+                return false;
+            }
+
+            return true;
+        }
+
+        // Función de autenticación
+        function authenticateUser(email, password) {
+            const user = users.find(u => 
+                (u.email.toLowerCase() === email.toLowerCase()) && 
+                u.password === password
+            );
+            return user;
+        }
+
+        // Manejar envío del formulario
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Validar formulario
+            if (!validateForm(email, password)) {
+                return;
+            }
+            
+            // Mostrar loading
+            const submitBtn = document.querySelector('.login-button');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '🔄 Iniciando sesión...';
+            submitBtn.disabled = true;
+            
+            // Simular delay de servidor
+            setTimeout(() => {
+                const user = authenticateUser(email, password);
+                
+                if (user) {
+                    loginSuccess(user.name);
+                } else {
+                    showMessage('Email/usuario o contraseña incorrectos. Prueba con: admin@levelup.com / admin123');
+                }
+                
+                // Restaurar botón
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        });
+
+        // Efectos visuales al cargar
+        window.addEventListener('load', function() {
+            document.querySelector('.login-form').style.opacity = '0';
+            document.querySelector('.login-form').style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                document.querySelector('.login-form').style.transition = 'all 0.8s ease';
+                document.querySelector('.login-form').style.opacity = '1';
+                document.querySelector('.login-form').style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Mensaje de ayuda para demo
+        setTimeout(() => {
+            showMessage('💡 Para probar: admin@levelup.com / admin123', 'success');
+        }, 3000);
+    </script>
+</body>
+</html>

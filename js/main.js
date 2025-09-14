@@ -6,6 +6,12 @@ function testJavaScript() {
     alert('JavaScript funciona!');
 }
 
+// Función para ir a la página de productos
+function goToInfoBlog() {
+    window.location.href = 'info_Blog.html';
+}
+
+
 // Función para ir a la página principal
 function goToHome() {
     window.location.href = 'html/index.html';
@@ -17,8 +23,8 @@ function goToProducts() {
 }
 
 // Función para ir a la página de registro
-function goToRegister() {
-    window.location.href = 'Registro_Usuario.html';
+function goToLogin() {
+    window.location.href = 'Inicio_Sesion.html';
 }
 
 // Función para ir a la página de un producto específico
@@ -42,8 +48,8 @@ function goToBlogs() {
 }
 
 // Función para ir a la página de login
-function goToLogin() {
-    window.location.href = '#login';
+function goToRegister() {
+    window.location.href = 'Registro.html';
 }
 
 // Función para ir al carrito
