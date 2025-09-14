@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <title>Producto - Level-Up Gamer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span id="texto_Encabezado">Level-up_gamer</span>
+            <img src="../img/Level-up_gamer.png" alt="Descripción de la imagen" class="logo-img">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a id="texto_Encabezado" href="index.html">Home</a></li>
+                <li><a id="texto_Encabezado" href="Productos.html">Productos</a></li>
+                <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
+                <li><a id="texto_Encabezado" href="#blogs">Blogs</a></li>
+                <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a id="texto_Encabezado" href="#login">Iniciar sesión</a>
+            <a id="texto_Encabezado" href="#register">Registrar usuario</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Carrito</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Inicio</a> > <a href="productos.html">Productos</a> > <span id="breadcrumb-product"></span>
+        </div>
+
+        <!-- Detalles del producto -->
+        <section class="product-detail">
+            <div class="product-detail-content">
+                <div class="product-image-large">
+                    <img id="product-image" src="" alt="">
+                </div>
+                <section class="encabezado">
+                <div class="product-info-detail">
+                    <h1 id="product-title"></h1>
+                    <p id="product-category" class="category"></p>
+                    <p id="product-description" class="description"></p>
+                    <div class="product-price-large">
+                        <span id="product-price"></span>
+                    </div>
+                    
+                    <div class="product-features">
+                        <h3>Características:</h3>
+                        <ul id="product-features-list">
+                            <!-- Se llenará dinámicamente -->
+                        </ul>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="add-to-cart-large" onclick="addToCartFromDetail()">
+                            Agregar al carrito
+                        </button>
+                        <button class="buy-now" onclick="buyNow()">
+                            Comprar ahora
+                        </button>
+                    </div>
+                </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Productos relacionados -->
+        <section class="related-products">
+            <h2>Productos relacionados</h2>
+            <div class="related-grid">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Level-Up Gamer</h3>
+                <div class="payment-methods">
+                    <div class="payment-icon visa">VISA</div>
+                    <div class="payment-icon mastercard">Mastercard</div>
+                    <div class="payment-icon amex">AMEX</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="categories">
+                    <a href="#consolas">Consolas</a>
+                    <span class="separator">|</span>
+                    <a href="#accesorios">Accesorios</a>
+                    <span class="separator">|</span>
+                    <a href="#computadores">Computadores</a>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <h4>¡Mantente al día! Únete a nuestro Newsletter.</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter Email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Base de datos de productos
+        const products = {
+            'juego-catan': {
+                name: 'Juego Catan',
+                image: '../img/Juego_Catan.jpg',
+                price: 29990,
+                category: 'Juegos de Mesa',
+                description: 'El clásico juego de estrategia donde los jugadores compiten para construir asentamientos, ciudades y carreteras en la isla de Catan. Un juego perfecto para 3-4 jugadores que combina estrategia, negociación y un poco de suerte.',
+                features: [
+                    'Para 3-4 jugadores',
+                    'Duración: 60-90 minutos',
+                    'Edad: 10+ años',
+                    'Incluye tablero modular',
+                    'Recursos: madera, ladrillo, lana, grano, mineral'
+                ]
+            },
+            'juego-carcassonne': {
+                name: 'Juego Carcassonne',
+                image: '../img/Juego_Carcassonne.jpg',
+                price: 38000,
+                category: 'Juegos de Mesa',
+                description: 'Construye el paisaje medieval de Carcassonne colocando losetas y colocando tus seguidores en ciudades, monasterios, caminos y campos. Un juego de estrategia simple pero profundo.',
+                features: [
+                    'Para 2-5 jugadores',
+                    'Duración: 30-45 minutos',
+                    'Edad: 8+ años',
+                    'Fácil de aprender',
+                    'Tablero modular'
+                ]
+            },
+            'mando-xbox': {
+                name: 'Mando Xbox',
+                image: '../img/Mando_xbox.jpg',
+                price: 65000,
+                category: 'Accesorios Gaming',
+                description: 'Control inalámbrico oficial de Xbox con conexión inalámbrica de 30 pies, botones de gatillo adaptativos y compatibilidad con Xbox Series X|S, Xbox One y PC.',
+                features: [
+                    'Conexión inalámbrica',
+                    'Botones de gatillo adaptativos',
+                    'Compatibilidad con Xbox y PC',
+                    'Batería recargable incluida',
+                    'Retrocompatible'
+                ]
+            },
+            'mouse-gaming': {
+                name: 'Mouse Gaming',
+                image: '../img/mouse.jpg',
+                price: 25000,
+                category: 'Accesorios Gaming',
+                description: 'Mouse gaming de alta precisión con sensor óptico de 12,000 DPI, iluminación RGB personalizable y diseño ergonómico para sesiones de gaming prolongadas.',
+                features: [
+                    'Sensor óptico 12,000 DPI',
+                    'Iluminación RGB',
+                    'Diseño ergonómico',
+                    '6 botones programables',
+                    'Cable USB resistente'
+                ]
+            },
+            'audifonos-hyperx': {
+                name: 'Audífonos HyperX Cloud II',
+                image: '../img/Audifonos_Gamer_HyperX_Cloud II.jpg',
+                price: 79990,
+                category: 'Accesorios Gaming',
+                description: 'Audífonos gaming profesionales con sonido 7.1 surround virtual, micrófono desmontable con cancelación de ruido y comodidad extrema para sesiones de gaming prolongadas.',
+                features: [
+                    'Sonido 7.1 surround virtual',
+                    'Micrófono desmontable',
+                    'Cancelación de ruido',
+                    'Almohadillas de memoria',
+                    'Cable de 2 metros'
+                ]
+            },
+            'playstation-5': {
+                name: 'PlayStation 5',
+                image: '../img/play_5.jpg',
+                price: 549990,
+                category: 'Consolas',
+                description: 'La consola de videojuegos más potente de Sony con SSD ultrarrápido, ray tracing en tiempo real, y compatibilidad con juegos 4K a 120fps. Incluye un control DualSense con retroalimentación háptica.',
+                features: [
+                    'SSD personalizado ultrarrápido',
+                    'Ray tracing en tiempo real',
+                    'Juegos 4K hasta 120fps',
+                    'Control DualSense incluido',
+                    'Compatibilidad con PS4',
+                    'Audio 3D Tempest'
+                ]
+            },
+            'pc-gaming': {
+                name: 'PC Gaming ASUS ROG',
+                image: '../img/pc_Strix.png',
+                price: 1299990,
+                category: 'Computadores',
+                description: 'PC Gaming de alto rendimiento con procesador Intel i7, tarjeta gráfica RTX 4070, 32GB de RAM DDR5 y almacenamiento SSD NVMe. Diseñado para gaming 4K y streaming profesional.',
+                features: [
+                    'Procesador Intel i7-13700K',
+                    'Tarjeta gráfica RTX 4070 12GB',
+                    '32GB RAM DDR5 5600MHz',
+                    'SSD NVMe 1TB',
+                    'Fuente 850W 80+ Gold',
+                    'Refrigeración líquida AIO'
+                ]
+            },
+            'silla-gaming': {
+                name: 'Silla Gaming',
+                image: '../img/silla.jpg',
+                price: 349990,
+                category: 'Accesorios Gaming',
+                description: 'Silla gaming ergonómica de alta calidad con iluminación RGB, soporte lumbar ajustable, reposacabezas y brazos regulables. Perfecta para sesiones de gaming y trabajo prolongadas.',
+                features: [
+                    'Iluminación RGB personalizable',
+                    'Soporte lumbar ajustable',
+                    'Reposacabezas desmontable',
+                    'Brazos 4D regulables',
+                    'Base de acero reforzado',
+                    'Ruedas de nylon suaves'
+                ]
+            }
+        };
+
+        // Obtener parámetros de la URL
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Cargar producto
+        function loadProduct() {
+            const productId = getUrlParameter('id');
+            const product = products[productId];
+            
+            if (!product) {
+                document.body.innerHTML = '<h1>Producto no encontrado</h1>';
+                return;
+            }
+
+            // Actualizar contenido
+            document.getElementById('product-title').textContent = product.name;
+            document.getElementById('product-image').src = product.image;
+            document.getElementById('product-image').alt = product.name;
+            document.getElementById('product-category').textContent = product.category;
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('product-price').textContent = `$${product.price.toLocaleString()} CLP`;
+            document.getElementById('breadcrumb-product').textContent = product.name;
+            document.title = `${product.name} - Level-Up Gamer`;
+
+            // Actualizar características
+            const featuresList = document.getElementById('product-features-list');
+            featuresList.innerHTML = '';
+            product.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresList.appendChild(li);
+            });
+
+            // Almacenar producto actual
+            window.currentProduct = product;
+        }
+
+        // Agregar al carrito desde página de detalle
+        function addToCartFromDetail() {
+            const product = window.currentProduct;
+            addToCart(product.name, product.price);
+        }
+
+        // Comprar ahora
+        function buyNow() {
+            const product = window.currentProduct;
+            addToCart(product.name, product.price);
+            alert('Redirigiendo al checkout...');
+        }
+
+        // Función addToCart (copiada del index.html)
+        let cart = [];
+        let cartTotal = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            cartTotal += price;
+            updateCartCount();
+            alert(`${productName} agregado al carrito!`);
+        }
+
+        function updateCartCount() {
+            const cartCount = document.querySelector('.user-options a[href="#cart"]');
+            if (cartCount) {
+                cartCount.textContent = `Cart (${cart.length})`;
+            }
+        }
+
+        // Cargar producto al cargar la página
+        window.onload = loadProduct;
+    </script>
+</body>
+</html>

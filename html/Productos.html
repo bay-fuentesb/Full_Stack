@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/estilo.css">
+    <title>Productos - Level-Up Gamer</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span id="texto_Encabezado">Level-up_gamer</span>
+            <img src="../img/Level-up_gamer.png" alt="Descripción de la imagen" class="logo-img">
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a id="texto_Encabezado" href="index.html">Home</a></li>
+                <li><a id="texto_Encabezado" href="#productos">Productos</a></li>
+                <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
+                <li><a id="texto_Encabezado" href="#blogs">Blogs</a></li>
+                <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="user-options">
+            <a id="texto_Encabezado" href="#login" onclick="LevelUpGamer.goToLogin()">Iniciar sesión</a>
+            <a id="texto_Encabezado" href="#register" onclick="LevelUpGamer.goToRegister()">Registrar usuario</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Cart (0)</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="index.html">Inicio</a> > <span>Productos</span>
+        </div>
+
+        <!-- Filtros y categorías -->
+        <section class="product-filters">
+            <div class="filters-content">
+                <h2>Nuestros Productos</h2>
+                <div class="category-filters">
+                    <button class="filter-btn active" onclick="filterProducts('all')">Todos</button>
+                    <button class="filter-btn" onclick="filterProducts('consolas')">Consolas</button>
+                    <button class="filter-btn" onclick="filterProducts('accesorios')">Accesorios</button>
+                    <button class="filter-btn" onclick="filterProducts('computadores')">Computadores</button>
+                    <button class="filter-btn" onclick="filterProducts('juegos')">Juegos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de productos -->
+        <section class="products-catalog">
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se cargarán dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Paginación -->
+        <section class="pagination">
+            <button class="page-btn" onclick="previousPage()">← Anterior</button>
+            <span class="page-info">Página <span id="currentPage">1</span> de <span id="totalPages">1</span></span>
+            <button class="page-btn" onclick="nextPage()">Siguiente →</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Level-Up Gamer</h3>
+                <div class="payment-methods">
+                    <div class="payment-icon visa">VISA</div>
+                    <div class="payment-icon mastercard">Mastercard</div>
+                    <div class="payment-icon amex">AMEX</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="categories">
+                    <a href="#consolas" onclick="LevelUpGamer.goToProductsByCategory('consolas')">Consolas</a>
+                    <span class="separator">|</span>
+                    <a href="#accesorios" onclick="LevelUpGamer.goToProductsByCategory('accesorios')">Accesorios</a>
+                    <span class="separator">|</span>
+                    <a href="#computadores" onclick="LevelUpGamer.goToProductsByCategory('computadores')">Computadores</a>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <h4>¡Mantente al día! Únete a nuestro Newsletter.</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter Email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Base de datos completa de productos
+        const allProducts = [
+            {
+                id: 'juego-catan',
+                name: 'Juego Catan',
+                image: '../img/Juego_Catan.jpg',
+                price: 29990,
+                category: 'juegos',
+                description: 'Estrategia - 3-4 jugadores'
+            },
+            {
+                id: 'juego-carcassonne',
+                name: 'Juego Carcassonne',
+                image: '../img/Juego_Carcassonne.jpg',
+                price: 38000,
+                category: 'juegos',
+                description: 'Estrategia - 2-5 jugadores'
+            },
+            {
+                id: 'mando-xbox',
+                name: 'Mando Xbox',
+                image: '../img/Mando_xbox.jpg',
+                price: 65000,
+                category: 'accesorios',
+                description: 'Control inalámbrico'
+            },
+            {
+                id: 'mouse-gaming',
+                name: 'Mouse Gaming',
+                image: '../img/mouse.jpg',
+                price: 25000,
+                category: 'accesorios',
+                description: 'Mouse inalámbrico'
+            },
+            {
+                id: 'playstation-5',
+                name: 'PlayStation 5',
+                image: '../img/play_5.jpg',
+                price: 499990,
+                category: 'consolas',
+                description: 'Consola de videojuegos'
+            },
+            {
+                id: 'pc-gaming',
+                name: 'PC Gaming ASUS ROG',
+                image: '../img/pc_Strix.png',
+                price: 1299990,
+                category: 'computadores',
+                description: 'RTX 4070 - Intel i7'
+            },
+            {
+                id: 'silla-gaming',
+                name: 'Silla Gaming',
+                image: '../img/silla.jpg',
+                price: 159990,
+                category: 'accesorios',
+                description: 'Ergonómica con RGB'
+            },
+            {
+                id: 'audifonos-hyperx',
+                name: 'Audífonos HyperX Cloud II',
+                image: '../img/Audifonos_Gamer_HyperX_Cloud II.jpg',
+                price: 89990,
+                category: 'accesorios',
+                description: 'Audio 7.1 surround'
+            },
+            {
+                id: 'pc-gaming',
+                name: 'PC Gaming ASUS ROG',
+                image: '../img/pc_Strix.png',
+                price: 1299990,
+                category: 'computadores',
+                description: 'RTX 4070 - Intel i7'
+            },
+            {
+                id: 'silla-gaming',
+                name: 'Silla Gaming',
+                image: '../img/silla.jpg',
+                price: 349990,
+                category: 'accesorios',
+                description: 'Ergonómica con RGB'
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentPage = 1;
+        let productsPerPage = 8;
+        let filteredProducts = allProducts;
+
+        // Función para filtrar productos
+        function filterProducts(category) {
+            currentFilter = category;
+            currentPage = 1;
+            
+            // Actualizar botones activos
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filtrar productos
+            if (category === 'all') {
+                filteredProducts = allProducts;
+            } else {
+                filteredProducts = allProducts.filter(product => product.category === category);
+            }
+            
+            renderProducts();
+            updatePagination();
+        }
+
+        // Función para renderizar productos
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const startIndex = (currentPage - 1) * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+            const productsToShow = filteredProducts.slice(startIndex, endIndex);
+            
+            grid.innerHTML = '';
+            
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'producto-card';
+                productCard.innerHTML = `
+                    <div class="producto-imagen">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="producto-info">
+                        <h3><a href="producto.html?id=${product.id}" style="color: #39FF14; text-decoration: none;">${product.name}</a></h3>
+                        <p id="Texto-Simple-Cuerpo">${product.description}</p>
+                        <span class="precio">$${product.price.toLocaleString()} CLP</span>
+                        <button class="add-to-cart" onclick="addToCart('${product.name}', ${product.price})">Agregar al carrito</button>
+                    </div>
+                `;
+                grid.appendChild(productCard);
+            });
+        }
+
+        // Función para actualizar paginación
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            document.getElementById('totalPages').textContent = totalPages;
+            document.getElementById('currentPage').textContent = currentPage;
+            
+            // Mostrar/ocultar botones según sea necesario
+            const prevBtn = document.querySelector('.page-btn:first-child');
+            const nextBtn = document.querySelector('.page-btn:last-child');
+            
+            prevBtn.style.display = currentPage === 1 ? 'none' : 'inline-block';
+            nextBtn.style.display = currentPage === totalPages ? 'none' : 'inline-block';
+        }
+
+        // Función para página anterior
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderProducts();
+                updatePagination();
+            }
+        }
+
+        // Función para página siguiente
+        function nextPage() {
+            const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderProducts();
+                updatePagination();
+            }
+        }
+
+        // Función addToCart (copiada del index.html)
+        let cart = [];
+        let cartTotal = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            cartTotal += price;
+            updateCartCount();
+            alert(`${productName} agregado al carrito!`);
+        }
+
+        function updateCartCount() {
+            const cartCount = document.querySelector('.user-options a[href="#cart"]');
+            if (cartCount) {
+                cartCount.textContent = `Cart (${cart.length})`;
+            }
+        }
+
+        // Verificar filtro por URL
+        function checkUrlFilter() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('categoria');
+            if (category && ['consolas', 'accesorios', 'computadores', 'juegos'].includes(category)) {
+                // Simular click en el botón correspondiente
+                const filterBtn = document.querySelector(`[onclick="filterProducts('${category}')"]`);
+                if (filterBtn) {
+                    filterBtn.click();
+                }
+            }
+        }
+
+        // Inicializar página
+        window.onload = function() {
+            checkUrlFilter();
+            renderProducts();
+            updatePagination();
+        };
+    </script>
+</body>
+</html>

@@ -15,16 +15,16 @@
         <nav class="main-nav">
             <ul>
                 <li><a id="texto_Encabezado" href="#home">Home</a></li>
-                <li><a id="texto_Encabezado" href="#productos">Productos</a></li>
+                <li><a id="texto_Encabezado" href="Productos.html">Productos</a></li>
                 <li><a id="texto_Encabezado" href="#nosotros">Nosotros</a></li>
                 <li><a id="texto_Encabezado" href="#blogs">Blogs</a></li>
                 <li><a id="texto_Encabezado" href="#contacto">Contacto</a></li>
             </ul>
         </nav>
         <div class="user-options">
-            <a id="texto_Encabezado" href="#login">Iniciar sesión</a>
-            <a id="texto_Encabezado" href="#register">Registrar usuario</a>
-            <a id="texto_Encabezado" href="#cart">Cart (0)</a>
+            <a id="texto_Encabezado" href="#login" onclick="LevelUpGamer.goToLogin()">Iniciar sesión</a>
+            <a id="texto_Encabezado" href="#register" onclick="LevelUpGamer.goToRegister()">Registrar usuario</a>
+            <a id="texto_Encabezado" href="#cart" onclick="LevelUpGamer.goToCart()">Carrito</a>
         </div>
     </header>
     <main>
@@ -36,7 +36,8 @@
                 pandemia, Leves-Up Gamer ofrece una amplia gama de productos para gamers, desde consolas y
                 accesorios hasta computadores y sillas especializadas. Aunque no cuenta con una ubicación física,
                 realiza despachos a todo el país</p>
-                <button class="button">Ver productos</button>
+                <button class="button" onclick="LevelUpGamer.goToProducts()">Ver productos</button>
+                <button class="button" onclick="LevelUpGamer.testJavaScript()" style="margin-left: 10px;">Probar JS</button>
             </ul>
             <img src="../img/Level-up_gamer.png" class="logo-body-img" alt="Logo Body">
         </section>
@@ -47,9 +48,13 @@
                     <img src="../img/Juego_Catan.jpg" alt="Juego Catan">
                 </div>
                 <div class="producto-info">
-                    <h3>Juego Catan</h3>
+                    <h3><a href="producto.html?id=juego-catan" style="color: #39FF14; text-decoration: none;">Juego Catan</a></h3>
                     <p id="Texto-Simple-Cuerpo">Estrategia - 3-4 jugadores</p>
                     <span class="precio">$29.990 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('Juego Catan', 29990)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('juego-catan')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
             
@@ -58,9 +63,13 @@
                     <img src="../img/Juego_Carcassonne.jpg" alt="Juego Carcassonne">
                 </div>
                 <div class="producto-info">
-                    <h3>Juego Carcassonne</h3>
+                    <h3><a href="producto.html?id=juego-carcassonne" style="color: #39FF14; text-decoration: none;">Juego Carcassonne</a></h3>
                     <p id="Texto-Simple-Cuerpo">Estrategia - 2-5 jugadores</p>
-                    <span class="precio">$38.000</span>
+                    <span class="precio">$38.000 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('Juego Carcassonne', 38000)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('juego-carcassonne')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
             
@@ -69,9 +78,13 @@
                     <img src="../img/Mando_xbox.jpg" alt="Mando Xbox">
                 </div>
                 <div class="producto-info">
-                    <h3>Mando Xbox</h3>
-                    <p>Control inalámbrico</p>
-                    <span class="precio">$65.000</span>
+                    <h3><a href="producto.html?id=mando-xbox" style="color: #39FF14; text-decoration: none;">Mando Xbox</a></h3>
+                    <p id="Texto-Simple-Cuerpo">Control inalámbrico</p>
+                    <span class="precio">$65.000 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('Mando Xbox', 65000)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('mando-xbox')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
             
@@ -80,56 +93,184 @@
                     <img src="../img/Audifonos_Gamer_HyperX_Cloud II.jpg" alt="Audifonos Gaming">
                 </div>
                 <div class="producto-info">
-                    <h3>Product Title</h3>
-                    <p>Attributes</p>
-                    <span class="precio">$00.00</span>
+                    <h3><a href="producto.html?id=audifonos-hyperx" style="color: #39FF14; text-decoration: none;">Audifonos Gamer</a></h3>
+                    <p id="Texto-Simple-Cuerpo">Audifono Cloud</p>
+                    <span class="precio">$79.990 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('Audifonos Gamer', 79990)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('audifonos-hyperx')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
             
             <div class="producto-card">
                 <div class="producto-imagen">
-                    <img src="../img/play_5.jpg" alt="Audifonos Gaming">
+                    <img src="../img/play_5.jpg" alt="play station 5">
                 </div>
                 <div class="producto-info">
-                    <h3>Product Title</h3>
-                    <p>Attributes</p>
-                    <span class="precio">$00.00</span>
+                    <h3><a href="producto.html?id=playstation-5" style="color: #39FF14; text-decoration: none;">PlayStation 5</a></h3>
+                    <p id="Texto-Simple-Cuerpo">Consola play Station</p>
+                    <span class="precio">$549.990 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('PlayStation 5', 549990)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('playstation-5')">Ver detalles</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="producto-card">
+                <div class="producto-imagen">
+                    <img src="../img/pc_Strix.png" alt="pc Gaming">
+                </div>
+                <div class="producto-info">
+                    <h3>PC Gaming ASUS ROG</h3>
+                    <p id="Texto-Simple-Cuerpo">RTX 4070 - Intel i7</p>
+                    <span class="precio">$1.299.990 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('PC Gaming ASUS ROG', 1299990)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('pc-gaming')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
             
             <div class="producto-card">
                 <div class="producto-imagen">
-                    <div class="placeholder">X</div>
+                    <img src="../img/silla.jpg" alt="silla Gaming">
                 </div>
                 <div class="producto-info">
-                    <h3>Product Title</h3>
-                    <p>Attributes</p>
-                    <span class="precio">$00.00</span>
+                    <h3>Silla Gaming</h3>
+                    <p id="Texto-Simple-Cuerpo">Ergonómica con RGB</p>
+                    <span class="precio">$349.990 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('Silla Gaming', 349990)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('silla-gaming')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
             
             <div class="producto-card">
                 <div class="producto-imagen">
-                    <div class="placeholder">X</div>
+                    <img src="../img/mouse.jpg" alt="mouse Gaming">
                 </div>
                 <div class="producto-info">
-                    <h3>Product Title</h3>
-                    <p>Attributes</p>
-                    <span class="precio">$00.00</span>
-                </div>
-            </div>
-            
-            <div class="producto-card">
-                <div class="producto-imagen">
-                    <div class="placeholder">X</div>
-                </div>
-                <div class="producto-info">
-                    <h3>Product Title</h3>
-                    <p>Attributes</p>
-                    <span class="precio">$00.00</span>
+                    <h3><a href="producto.html?id=mouse-gaming" style="color: #39FF14; text-decoration: none;">Mouse Gaming</a></h3>
+                    <p id="Texto-Simple-Cuerpo">Mouse inalámbrico</p>
+                    <span class="precio">$25.000 CLP</span>
+                    <div class="product-buttons">
+                        <button class="add-to-cart" onclick="addToCart('Mouse Gaming', 25000)">Agregar al carrito</button>
+                        <button class="view-product" onclick="LevelUpGamer.goToProduct('mouse-gaming')">Ver detalles</button>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Level-Up Gamer</h3>
+                <div class="payment-methods">
+                    <div class="payment-icon visa">VISA</div>
+                    <div class="payment-icon mastercard">Mastercard</div>
+                    <div class="payment-icon amex">AMEX</div>
+                </div>
+            </div>
+            
+            <div class="footer-center">
+                <div class="categories">
+                    <a href="#consolas" onclick="LevelUpGamer.goToProductsByCategory('consolas')">Consolas</a>
+                    <span class="separator">|</span>
+                    <a href="#accesorios" onclick="LevelUpGamer.goToProductsByCategory('accesorios')">Accesorios</a>
+                    <span class="separator">|</span>
+                    <a href="#computadores" onclick="LevelUpGamer.goToProductsByCategory('computadores')">Computadores</a>
+                </div>
+            </div>
+            
+            <div class="footer-right">
+                <h4>¡Mantente al día! Únete a nuestro Newsletter.</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Enter Email">
+                    <button class="subscribe-btn">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal del Carrito -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>🛒 Tu Carrito</h2>
+                <span class="close-cart" onclick="closeCart()">&times;</span>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Los productos se agregarán aquí dinámicamente -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <strong>Total: $<span id="cartTotal">0</span> CLP</strong>
+                </div>
+                <button class="checkout-btn">Proceder al pago</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        let cart = [];
+        let cartTotal = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            cartTotal += price;
+            updateCartDisplay();
+            showCartModal();
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            const cartCount = document.querySelector('.cart span');
+            
+            cartItems.innerHTML = '';
+            
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-price">$${item.price.toLocaleString()} CLP</span>
+                    <button class="remove-item" onclick="removeFromCart(${index})">❌</button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotalElement.textContent = cartTotal.toLocaleString();
+            cartCount.textContent = `Cart (${cart.length})`;
+        }
+
+        function removeFromCart(index) {
+            cartTotal -= cart[index].price;
+            cart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function showCartModal() {
+            document.getElementById('cartModal').style.display = 'block';
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('cartModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
